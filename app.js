@@ -31,7 +31,9 @@ let tempYear = tempDate.getFullYear();
 let tempMonth = tempDate.getMonth();
 let tempDay = tempDate.getDay();
 
+// months are ZERO index based;
 // let futureDate = new Date(2023, 9, 8, 4, 10, 20);
+
 const futureDate = new Date(tempYear, tempMonth, tempDay + 10, 11, 30, 0);
 const year = futureDate.getFullYear();
 const hours = futureDate.getHours();
@@ -40,7 +42,7 @@ const month = months[futureDate.getMonth()];
 const weekday = weekdays[futureDate.getDay()];
 const date = futureDate.getDate();
 
-giveaway.textContent = `giveaway end on ${weekday}, ${date} ${month} ${year}, ${hours}:${minutes}am`;
+giveaway.textContent = `giveaway ends on ${weekday}, ${date} ${month} ${year}, ${hours}:${minutes}am`;
 
 //future time in ms
 const futureTime = futureDate.getTime();
@@ -78,10 +80,11 @@ function getRemainingTime() {
 	});
 	if (t < 0) {
 		clearInterval(countdown);
-		deadline.innerHTML = `<h4 class="expired">sorry, this giveaway has expired</h4>`;
+		deadline.innerHTML = `<h4 class="expired">sorry, this giveaway has expired!</h4>`;
 	}
 }
 
 //countdown
 let countdown = setInterval(getRemainingTime, 1000);
+//set initial values
 getRemainingTime();
